@@ -1,0 +1,50 @@
+header {
+  max-width: 1024px;
+  margin: 0 auto;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 45px;
+  padding-top:40px;
+  .logo {
+
+    display:flex;
+    flex-direction: column;
+    .str-logo {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .str-slogan {
+      font-size:16px;
+      color:#505050;
+    }
+  }
+  .phone {
+    display:flex;
+    flex-direction: column;
+    .str-phone {
+      font-size: 22px;
+      font-weight: bold;
+      color:$black;
+      text-decoration: none;
+      display:block;
+      padding-bottom:6px;
+    }
+    .str-addr {
+      font-size: 14px;
+    }
+  }
+  .order {
+    .button {
+      padding:5px 8px;
+      width:215px;
+      color:#FFF;
+      font-size: 14px;
+      img {
+        margin-right: 10px;
+        width:25px;
+
+      }
+    }
+  }
+}
