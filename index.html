@@ -23,7 +23,7 @@
 <body ng-app="app-sauna">
     <div class="container">
 <div ng-controller="pageController">
-    <header>
+    <header class="desktop-container">
         <div class="logo">
             <span class="str-logo">НЕКРАСОВСКИЕ БАНИ</span>
             <span class="str-slogan">место для душевного отдыха</span>
@@ -36,13 +36,528 @@
             <a class="button"><img src="images/svg/timetable.svg">ЗАБРОНИРОВАТЬ</a>
         </div>
     </header>
+    <nav class="menu">
+        <a class="" href="#banya">
+            Баня
+        </a>
+        <a class="" href="#banya">
+            Сауна
+        </a>
+        <a class="" href="#banya">
+            Хаммам
+        </a>
+        <a class="" href="#banya">
+            Общественная баня
+        </a>
+        <a class="" href="#banya">
+            Меню ресторана
+        </a>
+        <a class="" href="#banya">
+            Услуги
+        </a>
+        <a class="" href="#banya">
+            Контакты
+        </a>
+    </nav>
 
     <article>
+        <div class="page-image"></div>
+
+        <div class="desktop-container">
+
+            <div class="center">
+                <h1 class="h1">Баня в Москве</h1>
+                <p>На сайте собран лучший контент, касающийся банных заведениях этого большого города. Если вы хотите быстро найти хорошую площадку для отдыха, где можно хорошо расслабиться и отстраниться от множества дел и рабочих моментов, то сауна – это правильный выбор. На нашем портале создано все для вашего удобного поиска – вы можете найти баню по метро в Москве, конкретному району, своеобразным особенностям. Кроме того, действует удобный поиск, благодаря которому любые искания завершатся успешно и быстро – это заведение по численности, по цене аренды за один час.</p>
+                <span class="h1 padding-top">Забронировать Баню в Москве</span>
+            </div>
+
+            <div class="progress">
+                <div class="">
+                    <img src="images/svg/pr/kadushka.svg"> Выберите баню
+                </div>
+                <div class="">
+                    <img src="images/svg/timetable-b.svg"> Дата
+                </div>
+                <div class="">
+                    <img src="images/svg/pr/massage.svg"> Услуги бани
+                </div>
+                <div class="">
+                    <img src="images/svg/pr/asc.svg"> Аксессуары
+                </div>
+            </div>
+
+            <div class="order-complete-form">
+                <div class="main">
+                    <div class="date">14 мая 2019</div>
+                    <div class="time">Время : с 18:00 до 00:00</div>
+                    <div class="price">
+                        <div class="place">Баня №1 vip</div>
+                        <div class="price">6 900 руб.</div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="count-guest">
+                        Количество человек: 6 чел
+                    </div>
+                </div>
+                <div class="services">
+                    <div class="header">Услуги:</div>
+                    <div class="service">
+                        <div class="name">Банщик</div>
+                        <div class="price">
+                            <div class="s">Парение классическое “по Царски”</div>
+                            <div class="p">3 900 руб.</div>
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="name">Банщик</div>
+                        <div class="price">
+                            <div class="s">Парение классическое “по Царски”</div>
+                            <div class="p">3 900 руб.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="acs">
+                    <div class="header">Банные аксессуары:</div>
+                    <div class="list">
+                        <div class="">Веник дубовый <span>300 руб.</span></div>
+                        <div class="">Веник можевеловый <span>300 руб.</span></div>
+                        <div class="">Скраб кофейный <span>300 руб.</span></div>
+                    </div>
+
+                    <div class="present">Кружка пива в подарок <span>4 шт.</span></div>
+
+                    <div class="sum">
+                        <div class="sum-price">
+                            Итого: <span class="price">4 590 руб.</span>
+                        </div>
+                        <div class="promo">
+                            <input placeholder="промо код">
+                        </div>
+                        <button class="button">ЗАБРОНИРОВАТЬ</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sauna">
+                <div class="slider">
+                    <slick class="full-page-slide sauna-slide"
+                           variable-width="true"
+                           arrows="false"
+                           dots="true"
+                           slides-to-show="1"
+                           infinite="true"
+                           speed="500">
+                        <div><img src="images/slides/slide-1-1024.png"></div>
+                        <div><img src="images/slides/slide-2-1024.png"></div>
+                    </slick>
+                </div>
+                <div class="info">
+                    <span class="header">Интерьеры бани</span>
+                    <div class="control-str">
+                        <div class="sauna-number">
+                            <div class="name">Баня №1</div>
+                            <div class="control">
+                                <button>-</button>
+                                <div class="num">1</div>
+                                <button>+</button>
+                            </div>
+                            <span class="text">кол. человек<br> + 100 руб.** </span>
+                        </div>
+                        <div class="date-time">
+                            <img src="images/svg/timetable-b.svg">
+                            <div class="time">
+                                <div class="d">19.04.2019</div>
+                                <div class="t">19:00 - 23:00</div>
+                            </div>
+                        </div>
+                        <div class="sum">
+                            <div class="price">
+                                <div class="d">1 499 руб./час</div>
+                                <div class="t">мин. заказ 2 часа</div>
+                            </div>
+                            <button class="button">ЗАКАЗАТЬ</button>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="info-list">
+                        <span class="header">В стоимость входит:</span>
+                        <div class="list">
+                            <div>Простыня</div>
+                            <div>Купель: 5х5 м</div>
+                            <div>Полотенце</div>
+                            <div>Парная: 15 кв.м</div>
+                            <div>Тапочки</div>
+                            <div>Зона отдыха: 30 кв.м</div>
+                            <div>Джакузи</div>
+                            <div>Комната отдыха</div>
+                            <div>Душ</div>
+                            <div>TV</div>
+                        </div>
+                        <p class="text">Дополнительно оплачивается: 1) Караоке. 2) За каждого дополнительного гостя в номерах взимается плата в размере 100 руб. с человека в час.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-block">
+                <div class="slider">
+                    <slick class="full-page-slide sauna-slide"
+                           variable-width="true"
+                           arrows="false"
+                           dots="true"
+                           slides-to-show="1"
+                           infinite="true"
+                           speed="500">
+                        <div><img src="images/slides/slide-1-1024.png"></div>
+                        <div><img src="images/slides/slide-2-1024.png"></div>
+                    </slick>
+                </div>
+                <div class="service">
+                    <div class="header">Услуги бани</div>
+                    <a class="green">ДОБАВИТЬ</a>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="name">Банщик</div>
+                            <div class="what">Наименованиие</div>
+                        </div>
+                        <div class="col">
+                            <div class="time">30 мин</div>
+                            <div class="what">время</div>
+                        </div>
+                        <div class="col">
+                            <div  class="time">4 499 руб.</div>
+                            <div  class="what">стоимость</div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="row sub">
+                        <div class="col">
+                            <label class="container-checkbox">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                            Парение классическое
+                        </div>
+                        <div class="col">
+                            10 мин.
+                        </div>
+                        <div class="col">
+                            1900 руб.
+                        </div>
+                    </div>
+                    <div class="row sub">
+                        <div class="col">
+                            <label class="container-checkbox">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                            Парение классическое
+                        </div>
+                        <div class="col">
+                            10 мин.
+                        </div>
+                        <div class="col">
+                            1900 руб.
+                        </div>
+                    </div>
+                    <div class="row sub">
+                        <div class="col">
+                            <label class="container-checkbox">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                            Парение классическое
+                        </div>
+                        <div class="col">
+                            10 мин.
+                        </div>
+                        <div class="col">
+                            1900 руб.
+                        </div>
+                    </div>
+                    <div class="row sub">
+                        <div class="col">
+                            <label class="container-checkbox">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                            Парение классическое
+                        </div>
+                        <div class="col">
+                            10 мин.
+                        </div>
+                        <div class="col">
+                            1900 руб.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="store">
+                <span class="h1">Банные аксессуары</span>
+                <p class="text">Какая баня без хорошего березового или елового веника</p>
+
+                <div class="category">
+                    <div class="btn">Для Мужчин</div>
+                    <div class="btn disabled">Для Женщин</div>
+                </div>
+
+                <div class="slider">
+                    <slick class="variable-width"
+                           variable-width="true"
+                           arrows="false"
+                           dots="false"
+                           slides-to-Show="3"
+                           infinite="true"
+                           speed="500">
+                        <div class="good">
+                            <div class="good-wrap">
+                                <img class="good-image" src="images/good/good-1.png">
+                                <div class="good-name">
+                                    Веник дубовый
+                                </div>
+                                <div class="good-price">
+                                    300 руб.
+                                </div>
+                                <div class="">
+                                    <div class="order">
+                                        <div class="control">
+                                            <div class="buttons">
+                                                <div class="btn decrement disabled">-</div>
+                                                <div class="result">1</div>
+                                                <div class="btn  increment">+</div>
+                                            </div>
+                                        </div>
+                                        <a class="order-btn button">ЗАКАЗАТЬ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="good">
+                            <div class="good-wrap">
+                                <img class="good-image" src="images/good/good-1.png">
+                                <div class="good-name">
+                                    Веник дубовый
+                                </div>
+                                <div class="good-price">
+                                    300 руб.
+                                </div>
+                                <div class="">
+                                    <div class="order">
+                                        <div class="control">
+                                            <div class="buttons">
+                                                <div class="btn decrement disabled">-</div>
+                                                <div class="result">1</div>
+                                                <div class="btn  increment">+</div>
+                                            </div>
+                                        </div>
+                                        <a class="order-btn button">ЗАКАЗАТЬ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="good">
+                            <div class="good-wrap">
+                                <img class="good-image" src="images/good/good-1.png">
+                                <div class="good-name">
+                                    Веник дубовый
+                                </div>
+                                <div class="good-price">
+                                    300 руб.
+                                </div>
+                                <div class="">
+                                    <div class="order">
+                                        <div class="control">
+                                            <div class="buttons">
+                                                <div class="btn decrement disabled">-</div>
+                                                <div class="result">1</div>
+                                                <div class="btn  increment">+</div>
+                                            </div>
+                                        </div>
+                                        <a class="order-btn button">ЗАКАЗАТЬ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </slick>
+                </div>
+
+            </div>
+
+            <div class="seo">
+                На сайте собран лучший контент, касающийся банных заведениях этого большого города. Если вы хотите быстро найти хорошую площадку для отдыха, где можно хорошо расслабиться и отстраниться от множества дел и рабочих моментов, то сауна – это правильный выбор. На нашем портале создано все для вашего удобного поиска – вы можете найти баню по метро в Москве, конкретному району, своеобразным особенностям. Кроме того, действует удобный поиск, благодаря которому любые искания завершатся успешно и быстро – это заведение по численности, по цене аренды за один час.
+                На сайте Бани.РФ собран лучший контент, касающийся банных заведениях этого большого города. Если вы хотите быстро найти хорошую площадку для отдыха, где можно хорошо расслабиться и отстраниться от множества дел и рабочих моментов, то сауна – это правильный выбор. На нашем портале создано все для вашего удобного поиска – вы можете найти баню по метро в Москве, конкретному району, своеобразным особенностям. Кроме того, действует удобный поиск, благодаря которому любые искания завершатся успешно и быстро – это заведение по численности, по цене аренды за один час.
+            </div>
+        </div>
+
+
+        <div class="page-image-manu"></div>
+
+
+        <div class="desktop-container">
+            <div class="menu-block">
+                <span class="h1">Меню ресторана</span>
+                <p>На сайте Бани.РФ собран лучший контент, касающийся банных заведениях этого большого города. Если вы хотите быстро найти хорошую площадку для отдыха, где можно хорошо расслабиться и отстраниться от множества дел и рабочих моментов, то сауна – это правильный выбор. На нашем портале создано все для вашего удобного поиска – вы можете найти баню по метро в Москве, конкретному району, своеобразным особенностям. Кроме того, действует удобный поиск, благодаря которому любые искания завершатся успешно и быстро – это заведение по численности, по цене аренды за один час.</p>
+
+                <div class="menu-wrap">
+
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <div class="header">Пиво</div>
+                            <div class="row">
+                                <span class="measure">0,5л</span>
+                                <span class="name"><span>Жигулевское барное</span></span>
+                                <span class="price">50 руб.</span>
+                            </div>
+                            <div class="row">
+                                <span class="measure">0,5л</span>
+                                <span class="name"><span>Балтика 0</span></span>
+                                <span class="price">50 руб.</span>
+                            </div>
+                            <div class="row">
+                                <span class="measure">0,5л</span>
+                                <span class="name"><span>Жигулевское барное</span></span>
+                                <span class="price">50 руб.</span>
+                            </div>  <div class="row">
+                            <span class="measure">0,5л</span>
+                            <span class="name"><span>Жигулевское барное</span></span>
+                            <span class="price">50 руб.</span>
+                        </div>  <div class="row">
+                            <span class="measure">0,5л</span>
+                            <span class="name"><span>Жигулевское барное</span></span>
+                            <span class="price">50 руб.</span>
+                        </div>
+                            <div class="row">
+                                <span class="measure">0,5л</span>
+                                <span class="name"><span>Жигулевское барное</span></span>
+                                <span class="price">50 руб.</span>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <div class="header">Закуски к пиву</div>
+                            <div class="row">
+                                <span class="measure">0,5л</span>
+                                <span class="name"><span>Жигулевское барное</span></span>
+                                <span class="price">50 руб.</span>
+                            </div>
+                            <div class="row">
+                                <span class="measure">0,5л</span>
+                                <span class="name"><span>Жигулевское барное</span></span>
+                                <span class="price">50 руб.</span>
+                            </div>
+                            <div class="row">
+                                <span class="measure">0,5л</span>
+                                <span class="name"><span>Жигулевское барное</span></span>
+                                <span class="price">50 руб.</span>
+                            </div>
+                            <div class="row">
+                                <span class="measure">0,5л</span>
+                                <span class="name"><span>Жигулевское барное</span></span>
+                                <span class="price">50 руб.</span>
+                            </div>
+                            <div class="row">
+                                <span class="measure">0,5л</span>
+                                <span class="name"><span>Жигулевское барное</span></span>
+                                <span class="price">50 руб.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="contact">
+                <span class="h1">Как добратся</span>
+
+                <div class="step">
+                    <b>от м.Выхино:</b> - автобус № 722  (ост. 1-я Вольская,17)
+                    - маршрутное такси № 722<br> (ост. 1-я Вольская, 17)
+                </div>
+
+                <div class="step">
+                    <b>от м.Братиславская:</b> маршрутное такси № 942<br>
+                    (ост. 1-я Вольская,17)
+                </div>
+
+                <div class="step">
+                    <b>Новокосино:</b> автобус № 723<br> (ост. 1-я Вольская,17)
+                </div>
+
+                <div class="step">
+                    <b>Кожухово:</b> автобус № 726 (ост. 1-я Вольская,17)
+                </div>
+
+                <div class="step">
+                    <b>От ж/д ст. Люберцы:</b> маршрутное такси № 9; № 14
+                </div>
+
+                <div class="step">
+                    <b>"Новая Некрасовка"</b> (от 4-й мик.р-он Кожухово) автобус № 849 (ост. Управа р-на Некрасовка)
+                </div>
+
+                <img src="images/map-1024.png">
+
+                <div class="contacts">
+                    <div class="h1">Контакты</div>
+                    <address>
+                        г. Москва, р-н Некрасовка, 1-я Вольская ул., дом. 26
+                    </address>
+                    <a class="phone">
+                        +7 (495) 706-85-97
+                    </a>
+                    <div class="work-time">
+                        Режим работы: <b>круглосуточно</b>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </article>
 
     <footer>
+        <div class="wrap">
+            <div class="col">
+                <div class="logo">
+                    <span class="str-logo">НЕКРАСОВСКИЕ БАНИ</span>
+                    <span class="str-slogan">место для душевного отдыха</span>
+                </div>
 
+                <div class="phons">
+                    <a class="phone">
+                        +7 (495) 706-85-97
+                    </a>
+                    <div class="work-time">
+                        Режим работы: <b>круглосуточно</b>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="c">
+                        <a>Баня</a>
+                        <a>Сауна</a>
+                        <a>Хаммам</a>
+                    </div>
+                    <div class="c">
+                        <a>Караоке</a>
+                        <a>Меню ресторана</a>
+                        <a>Услуги</a>
+                    </div>
+                </div>
+                <a class="email" href="mailto:info@banynekrasovka.ru">info@banynekrasovka.ru</a>
+            </div>
+            <div class="col">
+                <p class="follow">Присоединяйтесь к нам в социальных сетях</p>
+                <img src="images/social.png">
+            </div>
+        </div>
     </footer>
 </div>
 

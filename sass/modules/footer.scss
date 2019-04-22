@@ -1,0 +1,68 @@
+footer {
+  background: #E5E5E5;
+  padding:45px;
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    .logo {
+      margin-right:30px;
+      .str-logo {
+        font-weight: bold;
+        font-size: 30px;
+        display: block;
+        white-space: nowrap;
+
+      }
+      .str-slogan {
+        font-size: 16px;
+      }
+    }
+    .phons {
+      padding-top:20px;
+      .phone {
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .work-time {
+        font-size: 14px;
+      }
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .c {
+        width:50%;
+        a {
+          width:100%;
+          display:block;
+          font-size:14px;
+          white-space: nowrap;
+          font-weight: bold;
+          line-height: 20px;
+        }
+      }
+    }
+    .email {
+      margin-top:40px;
+      display: block;
+      color:$black;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .follow {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    img {
+      margin-top: 20px;
+    }
+
+    .col:nth-child(3) {
+      width:230px;
+      text-align: left;
+    }
+  }
+}
