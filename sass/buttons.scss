@@ -1,4 +1,6 @@
 .button {
+  border:0px;
+  color:#FFF;
   background: $green-btn;
   border-radius: 5px;
   height:33px;
@@ -7,4 +9,5 @@
   justify-content: center;
   align-items: center;
   padding: 0 8px;
+  font-family: "Roboto Slab";
 }
