@@ -55,7 +55,7 @@ gulp.task('html:watch', function () {
 
 
 gulp.task('js', function () {
-    gulp.src(['js/libs/*.js', 'js/*.js'])
+    gulp.src(['js/libs/*.js', 'js/*.js', 'js/directives/*.js'])
         //.pipe(uglify().on('error', function(e){
          //   console.log(e);
         //}))

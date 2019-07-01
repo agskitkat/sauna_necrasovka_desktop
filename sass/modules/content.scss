@@ -35,7 +35,10 @@
   margin:20px auto;
   max-width: 932px;
   padding-top:40px;
-  > div {
+  .stage {
+    color:$black;
+    text-decoration: none;
+    cursor: pointer;
     width:220px;
     border:1px solid #6B6B6B;
     border-radius: 5px;
@@ -100,26 +103,28 @@
     }
 
     .service {
-    .name {
-      font-size: 14px;
-      padding-top:10px;
-      padding-bottom:10px;
-    }
-    .price {
-      padding-bottom:5px;
-      display:flex;
-      justify-content: space-between;
-      border-bottom:1px solid #C4C4C4;
-      color:#505050;
-      font-size: 14px;
-      .s {
-        line-height: 18px;
+      .name {
+        font-size: 14px;
+        padding-top:10px;
+        padding-bottom:10px;
       }
-      .p {
-        white-space: nowrap;
+      .price {
+        padding-bottom:5px;
+        display:flex;
+        justify-content: space-between;
+        color:#505050;
+        font-size: 14px;
+        .s {
+          line-height: 18px;
+        }
+        .p {
+          white-space: nowrap;
+        }
       }
     }
-  }
+    .service:nth-last-child(1) {
+      border-top: 1px solid #DDD;
+    }
 
     .service:nth-last-child(1) {
       .price {
@@ -224,6 +229,7 @@
     width:510px;
   }
   .info {
+    max-width: 392px;
     .header {
       font-size:40px;
       font-weight: bold;
@@ -240,7 +246,13 @@
           white-space: nowrap;
           font-size: 18px;
           font-weight: bold;
+          text-decoration: underline;
+          img {
+            margin-left:5px;
+            margin-top:-3px;
+          }
         }
+
         .control {
           padding-top:10px;
           display:flex;
@@ -373,6 +385,12 @@
         .name {
           font-weight: bold;
           font-size: 18px;
+          font-weight: bold;
+          text-decoration: underline;
+          img {
+            margin-left:5px;
+            margin-top:-3px;
+          }
         }
         .what {
           padding-top:15px;
@@ -432,7 +450,6 @@
     font-size: 14px;
   }
 
-
   .category {
     padding-top: 20px;
     width: 306px;
@@ -441,21 +458,22 @@
     margin: 0 auto;
 
     .btn {
-      border: 1px solid #3174F6;
+      cursor: pointer;
       padding: 10px 10px;
       border-radius: 5px;
       font-size: 14px;
-      font-weight: bold;
-      color: #3174F6;
-      width: 127px;
 
+      border: 1px solid #393939;
+      color: #878787;
+      width: 127px;
     }
 
-    .btn.disabled {
-
+    .btn.active {
+      font-weight: bold;
+      border: 2px solid #3174F6;
+      color: #3174F6;
     }
   }
-
 
   .variable-width {
     margin-left:-18px;
@@ -471,25 +489,61 @@
         width:250px;
         margin:0 auto;
         background: #FFFFFF;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
         border-radius: 5px;
         padding:15px;
+        transition: all ease-in-out 0.3s;
         .good-image {
           height:180px;
           width:auto;
           margin:0 auto;
         }
+        .good-name {
+          font-weight: bold;
+          text-align: left;
+          font-size: 14px;
+          line-height:18px;
+        }
+        .good-price {
+          font-weight: bold;
+          line-height:18px;
+          text-align: left;
+          font-size: 14px;
+          color:#B6b6b6;
+        }
         .order {
+          padding-top:15px;
+          display:flex;
+          align-items: center;
           .control {
             width:45%;
             .buttons {
-
+              display:flex;
+              .btn {
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                width:30px;
+                height:35px;
+                border:1px solid $gray-1;
+                border-radius: 5px;
+              }
+              .result {
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                width:30px;
+                height:35px;
+              }
             }
             a {
-              width:45%;
+              text-decoration: none;
+              width:55%;
             }
           }
         }
+      }
+      .good-wrap:hover {
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
       }
     }
   }

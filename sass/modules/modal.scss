@@ -1,0 +1,48 @@
+.modal {
+  position:fixed;
+  background: rgba(0,0,0,.5);
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  display:none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100506;
+  .content {
+    width:90%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+}
+.modal.active {
+  display:flex;
+}
+
+
+
+.modal .lead-form-modal {
+
+  width:536px;
+  height:400px;
+  .header {
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom:64px;
+  }
+  .lead-form {
+    width:320px;
+    margin: 0 auto;
+    input {
+      height:50px;
+      box-sizing: border-box;
+      width:320px;
+    }
+    input::placeholder {
+      height:50px;
+      font-weight: bold;
+      color:$black;
+    }
+  }
+}

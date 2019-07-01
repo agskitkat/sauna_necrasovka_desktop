@@ -10,7 +10,7 @@
             <span class="str-addr">Режим работы: <b>круглосуточно</b></span>
         </div>
         <div class="order">
-            <a class="button"><img src="images/svg/timetable.svg">ЗАБРОНИРОВАТЬ</a>
+            <a class="button" href="#order"><img src="images/svg/timetable.svg">ЗАБРОНИРОВАТЬ</a>
         </div>
     </header>
     <nav class="menu">
@@ -45,132 +45,121 @@
             <div class="center">
                 <h1 class="h1">Баня в Москве</h1>
                 <p>На сайте собран лучший контент, касающийся банных заведениях этого большого города. Если вы хотите быстро найти хорошую площадку для отдыха, где можно хорошо расслабиться и отстраниться от множества дел и рабочих моментов, то сауна – это правильный выбор. На нашем портале создано все для вашего удобного поиска – вы можете найти баню по метро в Москве, конкретному району, своеобразным особенностям. Кроме того, действует удобный поиск, благодаря которому любые искания завершатся успешно и быстро – это заведение по численности, по цене аренды за один час.</p>
-                <span class="h1 padding-top">Забронировать Баню в Москве</span>
+                <span class="h1 padding-top" id="order">Забронировать Баню в Москве</span>
             </div>
 
             <div class="progress">
-                <div class="">
+                <div class="stage" ng-click="showChooseSauna()">
                     <img src="images/svg/pr/kadushka.svg"> Выберите баню
                 </div>
-                <div class="">
+                <div class="stage" ng-click="showChooseDATE()">
                     <img src="images/svg/timetable-b.svg"> Дата
                 </div>
-                <div class="">
+                <div class="stage">
                     <img src="images/svg/pr/massage.svg"> Услуги бани
                 </div>
-                <div class="">
+                <div class="stage">
                     <img src="images/svg/pr/asc.svg"> Аксессуары
                 </div>
             </div>
 
-            <div class="order-complete-form">
+            <div class="order-complete-form" >
                 <div class="main">
-                    <div class="date">14 мая 2019</div>
-                    <div class="time">Время : с 18:00 до 00:00</div>
+                    <div class="date">{{ (order.sauna.id)?orderDate("date"):"Выберите дату" }}</div>
+                    <div class="time">Время : <span ng-if="order.sauna.id">{{orderDate("starttime")}} - {{orderDate("endtime")}}</span> <span ng-if="!order.sauna.id">не указано</span></div>
                     <div class="price">
-                        <div class="place">Баня №1 vip</div>
-                        <div class="price">6 900 руб.</div>
+                        <div class="place">{{ order.sauna.current.name?order.sauna.current.name:"Сауна" }}</div>
+                        <div class="price">{{calcPrice()?calcPrice() + " руб.":"0 руб."}}</div>
                     </div>
                     <div class="line"></div>
                     <div class="count-guest">
-                        Количество человек: 6 чел
+                        Количество человек: {{order.sauna.guest}} чел
                     </div>
                 </div>
+
                 <div class="services">
                     <div class="header">Услуги:</div>
-                    <div class="service">
-                        <div class="name">Банщик</div>
-                        <div class="price">
-                            <div class="s">Парение классическое “по Царски”</div>
-                            <div class="p">3 900 руб.</div>
+                    <div class="service" ng-if="calcServicesPrice(service)" ng-repeat="service in services">
+                        <div class="name">{{ service.name }} </div>
+                        <div class="price" ng-repeat="item_service in service.services" ng-if="item_service.check">
+                            <div class="s">{{ item_service.name }}</div>
+                            <div class="p">{{ item_service.price }} руб.</div>
                         </div>
                     </div>
-                    <div class="service">
-                        <div class="name">Банщик</div>
-                        <div class="price">
-                            <div class="s">Парение классическое “по Царски”</div>
-                            <div class="p">3 900 руб.</div>
-                        </div>
-                    </div>
+
                 </div>
+
                 <div class="acs">
                     <div class="header">Банные аксессуары:</div>
                     <div class="list">
-                        <div class="">Веник дубовый <span>300 руб.</span></div>
-                        <div class="">Веник можевеловый <span>300 руб.</span></div>
-                        <div class="">Скраб кофейный <span>300 руб.</span></div>
+                        <div class="" ng-repeat="good in store" ng-if="good.count > 0">
+                            {{good.name}} x{{good.count}}
+                            <span>{{(good.price*good.count)}} руб.</span>
+                        </div>
                     </div>
 
-                    <div class="present">Кружка пива в подарок <span>4 шт.</span></div>
+                    <div  ng-if="present" class="present">{{present}}</div>
 
                     <div class="sum">
                         <div class="sum-price">
-                            Итого: <span class="price">4 590 руб.</span>
+                            Итого: <span class="price">{{orderSum()}} руб.</span>
                         </div>
-                        <div class="promo">
+                        <div class="promo" style="display:none;">
                             <input placeholder="промо код">
                         </div>
-                        <button class="button">ЗАБРОНИРОВАТЬ</button>
+                        <button class="button" ng-click="orderProcess()">ЗАБРОНИРОВАТЬ</button>
                     </div>
                 </div>
             </div>
 
             <div class="sauna">
                 <div class="slider">
-                    <slick class="full-page-slide sauna-slide"
+                    <slick ng-if="sliderOn" class="full-page-slide sauna-slide"
                            variable-width="true"
                            arrows="false"
                            dots="true"
                            slides-to-show="1"
                            infinite="true"
                            speed="500">
-                        <div><img src="images/slides/slide-1-1024.png"></div>
-                        <div><img src="images/slides/slide-2-1024.png"></div>
+                        <div ng-repeat="image in sauna_choose.images">
+                            <img src="{{ image }}">
+                        </div>
                     </slick>
                 </div>
                 <div class="info">
                     <span class="header">Интерьеры бани</span>
                     <div class="control-str">
                         <div class="sauna-number">
-                            <div class="name">Баня №1</div>
+                            <div class="name" ng-click="showChooseSauna()">{{ sauna_choose.name }} <img src="images/svg/arrow-right-b.svg"></div>
                             <div class="control">
-                                <button>-</button>
-                                <div class="num">1</div>
-                                <button>+</button>
+                                <button ng-click="saunaMansCount(-1)">-</button>
+                                <div class="num">{{ order.sauna.guest }}</div>
+                                <button ng-click="saunaMansCount(1)">+</button>
                             </div>
-                            <span class="text">кол. человек<br> + 100 руб.** </span>
+                            <span class="text">кол. человек<br> + {{ sauna_choose.guest_overprice }} руб.** </span>
                         </div>
-                        <div class="date-time">
+                        <div class="date-time" ng-click="showChooseDATE()">
                             <img src="images/svg/timetable-b.svg">
                             <div class="time">
-                                <div class="d">19.04.2019</div>
-                                <div class="t">19:00 - 23:00</div>
+                                <div class="d">{{ (order.sauna.id)?orderDate("date"):"Выбирите" }}</div>
+                                <div class="t" ng-if="order.sauna.id">{{orderDate("starttime")}} - {{orderDate("endtime")}}</div>
                             </div>
                         </div>
                         <div class="sum">
                             <div class="price">
-                                <div class="d">1 499 руб./час</div>
-                                <div class="t">мин. заказ 2 часа</div>
+                                <div class="d">{{ sauna_choose.price }} руб./час</div>
+                                <div class="t">мин. заказ {{ sauna_choose.min_h }} часа</div>
                             </div>
-                            <button class="button">ЗАКАЗАТЬ</button>
+                            <button class="button" ng-click="buttonOrderSauna(sauna_choose)">ЗАКАЗАТЬ</button>
                         </div>
                     </div>
                     <div class="line"></div>
                     <div class="info-list">
                         <span class="header">В стоимость входит:</span>
                         <div class="list">
-                            <div>Простыня</div>
-                            <div>Купель: 5х5 м</div>
-                            <div>Полотенце</div>
-                            <div>Парная: 15 кв.м</div>
-                            <div>Тапочки</div>
-                            <div>Зона отдыха: 30 кв.м</div>
-                            <div>Джакузи</div>
-                            <div>Комната отдыха</div>
-                            <div>Душ</div>
-                            <div>TV</div>
+                            <div ng-repeat="option in sauna_choose.options">{{option}}</div>
                         </div>
-                        <p class="text">Дополнительно оплачивается: 1) Караоке. 2) За каждого дополнительного гостя в номерах взимается плата в размере 100 руб. с человека в час.</p>
+                        <p class="text">Дополнительно оплачивается: 1) Караоке. 2) За каждого дополнительного гостя в номерах взимается плата в размере {{ sauna_choose.guest_overprice }} руб. с человека в час.</p>
                     </div>
                 </div>
             </div>
@@ -194,79 +183,35 @@
 
                     <div class="row">
                         <div class="col">
-                            <div class="name">Банщик</div>
-                            <div class="what">Наименованиие</div>
+                            <div class="name" ng-click="viewServiceChooser(true)">{{service_current.name}} <img src="images/svg/arrow-right-b.svg"></div>
                         </div>
                         <div class="col">
-                            <div class="time">30 мин</div>
-                            <div class="what">время</div>
+                            <div class="time">время</div>
+                            <div class="what"></div>
                         </div>
                         <div class="col">
-                            <div  class="time">4 499 руб.</div>
-                            <div  class="what">стоимость</div>
+                            <div  class="time">стоимость</div>
+                            <div  class="what"></div>
                         </div>
                     </div>
                     <div class="line"></div>
-                    <div class="row sub">
+
+                    <div class="row sub" ng-repeat="item_service in service_current.services">
                         <div class="col">
                             <label class="container-checkbox">
-                                <input type="checkbox" checked="checked">
+                                <input type="checkbox" ng-model="item_service.check" ng-checked="item_service.check">
                                 <span class="checkmark"></span>
                             </label>
-                            Парение классическое
+                            {{item_service.name}}
                         </div>
                         <div class="col">
-                            10 мин.
+                            {{item_service.time}}
                         </div>
                         <div class="col">
-                            1900 руб.
+                            {{item_service.price}} руб.
                         </div>
                     </div>
-                    <div class="row sub">
-                        <div class="col">
-                            <label class="container-checkbox">
-                                <input type="checkbox" checked="checked">
-                                <span class="checkmark"></span>
-                            </label>
-                            Парение классическое
-                        </div>
-                        <div class="col">
-                            10 мин.
-                        </div>
-                        <div class="col">
-                            1900 руб.
-                        </div>
-                    </div>
-                    <div class="row sub">
-                        <div class="col">
-                            <label class="container-checkbox">
-                                <input type="checkbox" checked="checked">
-                                <span class="checkmark"></span>
-                            </label>
-                            Парение классическое
-                        </div>
-                        <div class="col">
-                            10 мин.
-                        </div>
-                        <div class="col">
-                            1900 руб.
-                        </div>
-                    </div>
-                    <div class="row sub">
-                        <div class="col">
-                            <label class="container-checkbox">
-                                <input type="checkbox" checked="checked">
-                                <span class="checkmark"></span>
-                            </label>
-                            Парение классическое
-                        </div>
-                        <div class="col">
-                            10 мин.
-                        </div>
-                        <div class="col">
-                            1900 руб.
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
@@ -275,89 +220,49 @@
                 <p class="text">Какая баня без хорошего березового или елового веника</p>
 
                 <div class="category">
-                    <div class="btn">Для Мужчин</div>
-                    <div class="btn disabled">Для Женщин</div>
+                    <div class="btn {{storeFilterValue.category==='men'?'active':'' }}" ng-click="storeFilter('men')">Для Мужчин</div>
+                    <div class="btn {{storeFilterValue.category==='women'?'active':'' }}" ng-click="storeFilter('women')">Для Женщин</div>
                 </div>
 
                 <div class="slider">
-                    <slick class="variable-width"
+                    <slick ng-if="sliderOnStore" class="variable-width"
                            variable-width="true"
                            arrows="false"
                            dots="false"
                            slides-to-Show="3"
                            infinite="true"
                            speed="500">
-                        <div class="good">
+
+
+                        <div class="good" ng-repeat="good in store | filter:storeFilterValue">
                             <div class="good-wrap">
-                                <img class="good-image" src="images/good/good-1.png">
+                                <img class="good-image" src="{{good.image}}">
+
                                 <div class="good-name">
-                                    Веник дубовый
+                                    {{good.name}}
                                 </div>
+
                                 <div class="good-price">
-                                    300 руб.
+                                    {{good.price}} руб.
                                 </div>
+
                                 <div class="">
                                     <div class="order">
                                         <div class="control">
                                             <div class="buttons">
-                                                <div class="btn decrement disabled">-</div>
-                                                <div class="result">1</div>
-                                                <div class="btn  increment">+</div>
+                                                <div class="btn decrement {{!good.count?'disabled':''}}" ng-click="goodCount(good, -1)">-</div>
+                                                <div class="result">{{good.count}}</div>
+                                                <div class="btn  increment" ng-click="goodCount(good, 1)">+</div>
                                             </div>
                                         </div>
-                                        <a class="order-btn button">ЗАКАЗАТЬ</a>
+                                        <a class="order-btn button" ng-click="orderStore()">ЗАКАЗАТЬ</a>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
 
-                        <div class="good">
-                            <div class="good-wrap">
-                                <img class="good-image" src="images/good/good-1.png">
-                                <div class="good-name">
-                                    Веник дубовый
-                                </div>
-                                <div class="good-price">
-                                    300 руб.
-                                </div>
-                                <div class="">
-                                    <div class="order">
-                                        <div class="control">
-                                            <div class="buttons">
-                                                <div class="btn decrement disabled">-</div>
-                                                <div class="result">1</div>
-                                                <div class="btn  increment">+</div>
-                                            </div>
-                                        </div>
-                                        <a class="order-btn button">ЗАКАЗАТЬ</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="good">
-                            <div class="good-wrap">
-                                <img class="good-image" src="images/good/good-1.png">
-                                <div class="good-name">
-                                    Веник дубовый
-                                </div>
-                                <div class="good-price">
-                                    300 руб.
-                                </div>
-                                <div class="">
-                                    <div class="order">
-                                        <div class="control">
-                                            <div class="buttons">
-                                                <div class="btn decrement disabled">-</div>
-                                                <div class="result">1</div>
-                                                <div class="btn  increment">+</div>
-                                            </div>
-                                        </div>
-                                        <a class="order-btn button">ЗАКАЗАТЬ</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </slick>
                 </div>
 
@@ -382,71 +287,16 @@
 
                     <div class="menu-list">
                         <div class="menu-item">
-                            <div class="header">Пиво</div>
-                            <div class="row">
-                                <span class="measure">0,5л</span>
-                                <span class="name"><span>Жигулевское барное</span></span>
-                                <span class="price">50 руб.</span>
-                            </div>
-                            <div class="row">
-                                <span class="measure">0,5л</span>
-                                <span class="name"><span>Балтика 0</span></span>
-                                <span class="price">50 руб.</span>
-                            </div>
-                            <div class="row">
-                                <span class="measure">0,5л</span>
-                                <span class="name"><span>Жигулевское барное</span></span>
-                                <span class="price">50 руб.</span>
-                            </div>  <div class="row">
-                            <span class="measure">0,5л</span>
-                            <span class="name"><span>Жигулевское барное</span></span>
-                            <span class="price">50 руб.</span>
-                        </div>  <div class="row">
-                            <span class="measure">0,5л</span>
-                            <span class="name"><span>Жигулевское барное</span></span>
-                            <span class="price">50 руб.</span>
-                        </div>
-                            <div class="row">
-                                <span class="measure">0,5л</span>
-                                <span class="name"><span>Жигулевское барное</span></span>
-                                <span class="price">50 руб.</span>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <div class="menu-list">
-                        <div class="menu-item">
-                            <div class="header">Закуски к пиву</div>
-                            <div class="row">
-                                <span class="measure">0,5л</span>
-                                <span class="name"><span>Жигулевское барное</span></span>
-                                <span class="price">50 руб.</span>
-                            </div>
-                            <div class="row">
-                                <span class="measure">0,5л</span>
-                                <span class="name"><span>Жигулевское барное</span></span>
-                                <span class="price">50 руб.</span>
-                            </div>
-                            <div class="row">
-                                <span class="measure">0,5л</span>
-                                <span class="name"><span>Жигулевское барное</span></span>
-                                <span class="price">50 руб.</span>
-                            </div>
-                            <div class="row">
-                                <span class="measure">0,5л</span>
-                                <span class="name"><span>Жигулевское барное</span></span>
-                                <span class="price">50 руб.</span>
-                            </div>
-                            <div class="row">
-                                <span class="measure">0,5л</span>
-                                <span class="name"><span>Жигулевское барное</span></span>
-                                <span class="price">50 руб.</span>
+                            <div ng-repeat="cat in menu">
+                                <div class="header">{{cat.name}}</div>
+                                <div class="row" ng-repeat="item in cat.items">
+                                    <span class="measure">{{item.weigth}}</span>
+                                    <span class="name"><span>{{item.name}}</span></span>
+                                    <span class="price">{{item.price}} руб.</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -492,6 +342,113 @@
                     <div class="work-time">
                         Режим работы: <b>круглосуточно</b>
                     </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal {{ leadForm?'active':'closed' }}">
+            <div class="content">
+                <div class="select-list-sauna lead-form-modal">
+                    <div class="header">Забронировать баню</div>
+                    <div class="close" ng-click="closeLeadForm()">
+                        <img src="images/svg/close.svg">
+                    </div>
+                    <div class="lead-form">
+                        <input class="input" type="text" ng-model="order.client.name" placeholder="Имя">
+                        <input class="input" type="text" ng-model="order.client.phone" placeholder="Телефон">
+                        <div ng-if="errorLeadeFormMsg" class="msg-error">{{errorLeadeFormMsg}}</div>
+                        <a ng-click="sendLeadForm()"  class="button h50">Забронировать</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal {{ leadFormOK?'active':'closed' }}">
+            <div class="content">
+                <div class="select-list-sauna lead-form-ok">
+                    <div class="header">Спасибо</div>
+                    <div class="close" ng-click="closeLeadForm()">
+                        <img src="images/svg/close.svg">
+                    </div>
+                    <div class="text">
+                        С вами свяжется менеджер для подтверждения брони.
+                        Ожидайте звонка.
+                    </div>
+                    <div class="social">
+                        Присоединяйтесь к нам в социальных сетях<br><br>
+                        <img src="images/social.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal {{ leadFormError?'active':'closed' }}">
+            <div class="content">
+                <div class="select-list-sauna lead-form-ok">
+                    <div class="header">Возникла ошибка</div>
+                    <div class="close" ng-click="closeleadFormError()">
+                        <img src="images/svg/close.svg">
+                    </div>
+                    <div class="text">
+                        {{leadFormErrorMsg}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal {{ booleanChooseSauna?'active':'closed' }}">
+            <div class="content">
+                <div class="select-list-sauna">
+                    <div class="header">Выберите баню</div>
+                    <div class="close" ng-click="closeChooseSauna()">
+                        <img src="images/svg/close.svg">
+                    </div>
+
+                    <div class="option {{sauna.choose?'active':'gray'}}" ng-repeat="sauna in sauna_list" ng-click="chooseSauna(sauna)">
+                        <div class="name">
+                            {{sauna.name}} <span class="vip">VIP</span>
+                        </div>
+                        <div class="name">
+                            {{ currency(sauna.price) }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal {{ booleanChooseDATE?'active':'closed' }}" >
+            <div class="content">
+                <datatime sauna-id="sauna.choose.id"
+                          pick-date-controller="pickdate"
+                          close-date-modal="closemodal"
+                          min-order-hours="sauna_choose.min_h"
+                          get-hour-by-current-day-sauna="getOrderTimeOfDateSauna">
+                </datatime>
+            </div>
+        </div>
+
+
+
+        <div class="modal {{ booleanChooseService?'active':'closed' }}">
+            <div class="content">
+                <div class="select-list-sauna">
+                    <div class="header">Услуги</div>
+                    <div class="close" ng-click="viewServiceChooser(false)">
+                        <img src="images/svg/close.svg">
+                    </div>
+
+                    <div class="option {{service.current?'active':'gray'}}" ng-repeat="service in services" ng-click="chooseService(service)">
+                        <div class="name">
+                            {{service.name}}
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
